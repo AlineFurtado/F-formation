@@ -379,4 +379,9 @@ def main():
     ax = fig.add_subplot(111, aspect='equal')
     F_formation.draw_formation(ax,p1,p2,xc,yc,rc,samples)
     
-    
+    ##### Teste da função Cluster#####
+    '''Atribuição de Rewards''' #em construção pode mudar!!!!!
+    cluster = Clusters()
+    print(cluster)
+    #Cada cluster contém: 2 objetos pessoas, as coordenadas do O-space (x,y,raio), 
+    #e um dicionário para cada instância (instância = coordenada o target + reward)
