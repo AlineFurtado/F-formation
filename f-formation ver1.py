@@ -109,7 +109,7 @@ class F_formation:
         
         return p1,p2,xc,yc,rc
     
-    def approach_samples(p1,p2,xc,yc,rc, num=4): #por enquanto para f-formation face to face
+    def approach_samples(p1,p2,xc,yc,rc, num=5): #por enquanto para f-formation face to face
     #calcula o raio do P-space r e de R-space R, em seguida define a posição dos approach samples.
     #best approach sample posicionado dentro do R-space com o raio passando pelo ponto (xc,yc) 
     #demais samples entre -45 e +45 ao redor dele
@@ -157,23 +157,27 @@ class F_formation:
         minang=-40
         maxang=40
         angles = np.linspace(np.deg2rad(minang), np.deg2rad(maxang), num)
-        sx = rapp * np.cos(thc + angles) + xc
-        sy = rapp * np.sin(thc + angles) + yc
-        samples.append([sx, sy])
+        for angle in angles:
+            sx = rapp * np.cos(thc + angle) + xc
+            sy = rapp * np.sin(thc + angle) + yc
+            samples.append([sx, sy])
         
         if x1 ==x2:
-            sx1 = rapp * np.cos(np.deg2rad(0) + angles) + xc
-            sy1 = rapp * np.sin(np.deg2rad(0) + angles) + yc
-            samples.append([sx1, sy1])
+            for angle in angles:
+                sx1 = rapp * np.cos(np.deg2rad(0) + angle) + xc
+                sy1 = rapp * np.sin(np.deg2rad(0) + angle) + yc
+                samples.append([sx1, sy1])
         else:
             if y1 == y2:
-                sx1 = rapp * np.cos(-thc + angles) + xc
-                sy1 = rapp * np.sin(-thc + angles) + yc
-                samples.append([sx1, sy1])
+                for angle in angles:
+                    sx1 = rapp * np.cos(-thc + angle) + xc
+                    sy1 = rapp * np.sin(-thc + angle) + yc
+                    samples.append([sx1, sy1])
             else:
-                sx1 = rapp * np.cos((th2+np.deg2rad(90)) + angles) + xc
-                sy1 = rapp * np.sin((th2+np.deg2rad(90)) + angles) + yc
-                samples.append([sx1, sy1])
+                for angle in angles:
+                    sx1 = rapp * np.cos((th2+np.deg2rad(90)) + angle) + xc
+                    sy1 = rapp * np.sin((th2+np.deg2rad(90)) + angle) + yc
+                    samples.append([sx1, sy1])
             
         print(samples)
         return samples
@@ -231,7 +235,7 @@ def Clusters():
     #vou considerar por simplicidade que abordar os grupos pela direita ou por cima seja o melhor, para atribuir os rewards
     rw = [+10,+5]
     for sample in samples:
-        if sample[0]>xc:
+        if sample[0] or sample[1]:
             instances1.update({len(instances1):(sample,rw[0])})
         else:
             instances1.update({len(instances1):(sample,rw[1])})
@@ -342,6 +346,7 @@ def main():
     
     p1,p2,xc,yc,rc = F_formation.Face_to_face(x1,y1,th1,x2,y2,th2)
     samples = F_formation.approach_samples(p1,p2,xc,yc,rc)
+    print(samples)
     fig = plt.figure(figsize=(8,5), dpi=100)
     ax = fig.add_subplot(111, aspect='equal')
     F_formation.draw_formation(ax,p1,p2,xc,yc,rc,samples)
