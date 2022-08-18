@@ -14,4 +14,8 @@ F-formationver3:
 Função Create_clusters() retorna um dicionário da forma {cluster0:[xt1,yt1,thc1,rw1],[xt2,yt2,thc2,rw2],...[xtn,ytn,thcn,rwn].
 Onde: x,y são as coordenadas do approach point, thc é a orientação em relação ao centro do O-space, rw é o reward daquele approach point.
 
-F-formationver4: em construção (novos f-formations com grupos maiores que 2 pessoas e portanto rewards maiores
+F-formationver4: 
+A função Create_clusters não retorna um dicionário, mas sim todas as pessoas e samples na cena (não está nada elegante, ainda pretendo melhorar)
+novos f-formations com grupos maiores que 2 pessoas
+função Instance retorna as listas necessárias para o solucionador do SOP: [no_id,x,y],[set_id,set_profit,id_vertice_list],[set_id,xc,yc]
+Código muito manual, nada elegante mas funcional!!! (no futuro próximo pretendo melhorar as funções e a classe F-formation para tornar o código mais elegante e compacto)
