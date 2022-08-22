@@ -20,6 +20,10 @@ A função Create_clusters não retorna um dicionário, mas sim todas as pessoas
 
 criei a representação de novos f-formations com grupos maiores que 2 pessoas
 
-função Instance retorna as listas necessárias para o solucionador do SOP: [no_id,x,y],[set_id,set_profit,id_vertice_list],[set_id,xc,yc]
+função Instance retorna as listas necessárias para o solucionador do SOP: [no_id,x,y],[set_id,set_profit,id_vertice_list],[set_id,xc,yc,rc]
 
 Código muito manual, nada elegante mas funcional!!! (no futuro próximo pretendo melhorar as funções e a classe F-formation para tornar o código mais elegante e compacto)
+
+
+F_formationver4.1:
+Usando função Plot_nods pra plotar a cena com todos as f-formations
