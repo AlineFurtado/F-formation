@@ -8,3 +8,5 @@ função Instance retorna as listas necessárias para o solucionador do SOP: [no
 Código muito manual, nada elegante mas funcional!!! (no futuro próximo pretendo melhorar as funções e a classe F-formation para tornar o código mais elegante e compacto)
 
 Usando função Plot_nods pra plotar a cena com todos as f-formations
+
+Finalmente no arquivo f-formatio ver6.py aplicamos o método PRM ao resultado obtido pelo VNS e encontramos um tour que respeita as restrições sociais do nosso problema.
